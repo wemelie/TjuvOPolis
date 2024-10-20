@@ -62,6 +62,11 @@ public class Person
 
             public void Rob(Citizen citizen)
             {
+            Console.Clear();
+            {
+            }
+            
+            
                 if (citizen.Inventory.Count > 0)
                 {
                     Random rand = new Random();
@@ -69,6 +74,8 @@ public class Person
                     string item = citizen.Inventory[itemIndex];
                     Inventory.Add(item);
                     citizen.Inventory.RemoveAt(itemIndex);
+                    
+                    Console.SetCursorPosition(0,28);
                     Console.WriteLine($"Tjuven rånar medborgaren och tar: {item}");
                 }
             }
@@ -83,8 +90,13 @@ public class Person
             
             public void Arrest(Thief thief)
             {
+            Console.Clear();
+            {
+            }
                 Inventory.AddRange(thief.Inventory);
                 thief.Inventory.Clear();
+
+                Console.SetCursorPosition(0,27);
                 Console.WriteLine("Polisen tar tjuven och beslagtar alla saker.");
             }
         }
