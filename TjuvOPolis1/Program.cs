@@ -9,7 +9,7 @@ namespace TjuvOPolis1
             City city = new City(15, 20, 25); 
             city.StartSimulation();
         }
-        public void RitaFyrkant()
+        public void DrawSquare()
             
         {
             int width = 100; 
