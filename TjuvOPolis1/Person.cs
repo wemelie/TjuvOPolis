@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TjuvOPolis1
 {
-  
-    
-public class Person
+
+
+    public class Person
     {
         public int X { get; set; } // X-position 
         public int Y { get; set; } // Y-position 
@@ -27,15 +27,15 @@ public class Person
         public void SetRandomDirection()
         {
             Random rand = new Random();
-            int direction = rand.Next(0, 6); 
+            int direction = rand.Next(0, 6);
             switch (direction)
             {
-                case 0: XDirection = 1; YDirection = 0; break;  
-                case 1: XDirection = -1; YDirection = 0; break; 
-                case 2: XDirection = 0; YDirection = 1; break;  
-                case 3: XDirection = 0; YDirection = -1; break; 
-                case 4: XDirection = 1; YDirection = 1; break;  
-                case 5: XDirection = -1; YDirection = -1; break; 
+                case 0: XDirection = 1; YDirection = 0; break;
+                case 1: XDirection = -1; YDirection = 0; break;
+                case 2: XDirection = 0; YDirection = 1; break;
+                case 3: XDirection = 0; YDirection = -1; break;
+                case 4: XDirection = 1; YDirection = 1; break;
+                case 5: XDirection = -1; YDirection = -1; break;
             }
         }
 
@@ -46,48 +46,72 @@ public class Person
         }
     }
 
-         public class Citizen : Person
+    public class Citizen : Person
+    {
+        public Citizen(int x, int y) : base(x, y)
         {
-            public Citizen (int x, int y) : base(x, y)
-            {
-                Inventory.AddRange(new List<string> { "Nycklar", "Mobiltelefon", "Pengar", "Klocka" });
-            }
+            Inventory.AddRange(new List<string> { "Nycklar", "Mobiltelefon", "Pengar", "Klocka" });
+        }
+    }
+
+    public class Thief : Person
+    {
+        public Thief(int x, int y) : base(x, y)
+        {
         }
 
-        public class Thief : Person
+        public string Rob(Citizen citizen)
         {
-            public Thief(int x, int y) : base(x, y)
-            {
-            }
-
-            public void Rob(Citizen citizen)
-            {
-                if (citizen.Inventory.Count > 0)
-                {
-                    Random rand = new Random();
-                    int itemIndex = rand.Next(0, citizen.Inventory.Count);
-                    string item = citizen.Inventory[itemIndex];
-                    Inventory.Add(item);
-                    citizen.Inventory.RemoveAt(itemIndex);
-                    Console.WriteLine($"Tjuven rånar medborgaren och tar: {item}");
-                }
-            }
-        }
-
-        public class Police : Person
-        {
-            public Police(int x, int y) : base(x, y)
-            {
-            }
+         
 
             
-            public void Arrest(Thief thief)
+            if (citizen.Inventory.Count > 0)
             {
+                Random rand = new Random();
+                int itemIndex = rand.Next(0, citizen.Inventory.Count);
+                string item = citizen.Inventory[itemIndex];
+                Inventory.Add(item);
+                citizen.Inventory.RemoveAt(itemIndex);
+
+                //Console.SetCursorPosition(0, 25);
+                return($"Tjuven rånar medborgaren och tar: {item}         ");
+            }
+            else
+            {
+                return("Tjuven misslyckades att råna då meborgaren har inga saker kvar!");
+
+
+            }
+        }
+    }
+
+    public class Police : Person
+    {
+        public Police(int x, int y) : base(x, y)
+        {
+        }
+
+
+        public string Arrest(Thief thief)
+        {
+            if (thief.Inventory.Count > 0)
+            {
+
+
                 Inventory.AddRange(thief.Inventory);
                 thief.Inventory.Clear();
-                Console.WriteLine("Polisen tar tjuven och beslagtar alla saker.");
+
+                //Console.SetCursorPosition(0, 26);
+                return("Polisen tar tjuven och beslagtar alla saker.        ");
             }
+            else
+            {
+                return("Polisen tog tjuven, men det fanns inget att ta.");
+            }
+
+
         }
 
     }
+}
 
