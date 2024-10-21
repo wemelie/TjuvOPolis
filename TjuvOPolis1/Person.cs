@@ -70,7 +70,7 @@ namespace TjuvOPolis1
                 thief.Inventory.Add(item);
                 citizen.Inventory.RemoveAt(itemIndex);
 
-                Console.SetCursorPosition(0, 26);
+                Console.SetCursorPosition(0, 26); // Detta skrivs så att texten hamnar på samma ställe när programmet körs.
                 Console.WriteLine($"Tjuven rånar medborgaren och tar: {item}");
             }
         }
@@ -89,7 +89,7 @@ namespace TjuvOPolis1
             Inventory.AddRange(thief.Inventory);
             thief.Inventory.Clear();
 
-            Console.SetCursorPosition(0, 25);
+            Console.SetCursorPosition(0, 25); // Detta skrivs så att texten hamnar på samma ställe när programmet körs.
             Console.WriteLine("Polisen tar tjuven och beslagtar alla saker.");
         }
     }
