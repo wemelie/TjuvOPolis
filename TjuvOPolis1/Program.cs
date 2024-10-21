@@ -10,9 +10,7 @@ namespace TjuvOPolis1
             city.StartSimulation();
         }
 
-        int width = 100;
-        int height = 25;
-
+        
     }
         }
     
