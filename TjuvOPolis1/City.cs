@@ -84,7 +84,7 @@ namespace TjuvOPolis1
         private void DrawCity()
         {
            Console.Clear();
-           //DrawSquare(); Pausar att kanterna syns
+           DrawSquare(); 
 
             foreach (var person in persons)
             {
