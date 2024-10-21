@@ -6,18 +6,18 @@ namespace TjuvOPolis1
     {
         static void Main(string[] args)
         {
-            City city = new City(15, 20, 25); 
+            City city = new City(15, 20, 25);
             city.StartSimulation();
         }
 
-        
+
     }
-        }
-    
 
-  
-        
+}
 
-    
+
+
+
+
 
 

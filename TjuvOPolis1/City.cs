@@ -55,9 +55,9 @@ namespace TjuvOPolis1
                         }
                     }
                 }
-
+                Thread.Sleep(2000);
                 DrawCity();
-                Thread.Sleep(2000); 
+
             }
         }
 
@@ -66,16 +66,12 @@ namespace TjuvOPolis1
         {
             if (person1 is Police police && person2 is Thief thief)
             {
-                string arrestMessage = police.Arrest(thief);
-                Console.WriteLine(arrestMessage);
-                Thread.Sleep(2000);
+                police.Arrest(thief);
                 numberOfArrestedThieves++;
             }
             else if (person1 is Thief thief2 && person2 is Citizen citizen)
             {
-                string RobMessage = thief2.Rob(citizen);
-                Console.WriteLine(RobMessage);
-                Thread.Sleep(2000);
+                thief2.Rob(citizen, thief2);
                 numberOfRobbedCitizens++;
             }
         }
@@ -83,28 +79,24 @@ namespace TjuvOPolis1
 
         private void DrawCity()
         {
-           Console.Clear();
-           DrawSquare(); 
+            Console.Clear();
+            DrawSquare();
 
             foreach (var person in persons)
             {
-
                 Console.SetCursorPosition(person.X, person.Y);
-
                 if (person is Police) Console.Write("P");
                 else if (person is Thief) Console.Write("T");
                 else if (person is Citizen) Console.Write("M");
             }
-            Console.SetCursorPosition(0, height + 1);
 
+            Console.SetCursorPosition(0, height + 1); // Flytta cursor till botten av rutan så statsen hamnar utanför
             Console.WriteLine($"\nAntal rånade medborgare: {numberOfRobbedCitizens}");
             Console.WriteLine($"Antal gripna tjuvar: {numberOfArrestedThieves}");
-
         }
-        private void DrawSquare()
-        
-        {
 
+        private void DrawSquare()
+        {
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
@@ -112,20 +104,14 @@ namespace TjuvOPolis1
                     if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
                     {
                         Console.SetCursorPosition(j, i);
-                        Console.Write(" | "); 
-                    }
-
-                    {
-                    
-                      }
+                        Console.Write("|");
                     }
                 }
-               
             }
-
         }
-    }
 
-        
-    
+    }
+}
+
+
 

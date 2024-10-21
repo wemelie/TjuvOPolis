@@ -60,27 +60,18 @@ namespace TjuvOPolis1
         {
         }
 
-        public string Rob(Citizen citizen)
+        public void Rob(Citizen citizen, Thief thief)
         {
-         
-
-            
             if (citizen.Inventory.Count > 0)
             {
                 Random rand = new Random();
                 int itemIndex = rand.Next(0, citizen.Inventory.Count);
                 string item = citizen.Inventory[itemIndex];
-                Inventory.Add(item);
+                thief.Inventory.Add(item);
                 citizen.Inventory.RemoveAt(itemIndex);
 
-                //Console.SetCursorPosition(0, 25);
-                return($"Tjuven rånar medborgaren och tar: {item}         ");
-            }
-            else
-            {
-                return("Tjuven misslyckades att råna då meborgaren har inga saker kvar!");
-
-
+                Console.SetCursorPosition(0, 26);
+                Console.WriteLine($"Tjuven rånar medborgaren och tar: {item}");
             }
         }
     }
@@ -92,26 +83,16 @@ namespace TjuvOPolis1
         }
 
 
-        public string Arrest(Thief thief)
+        public void Arrest(Thief thief)
         {
-            if (thief.Inventory.Count > 0)
-            {
 
+            Inventory.AddRange(thief.Inventory);
+            thief.Inventory.Clear();
 
-                Inventory.AddRange(thief.Inventory);
-                thief.Inventory.Clear();
-
-                //Console.SetCursorPosition(0, 26);
-                return("Polisen tar tjuven och beslagtar alla saker.        ");
-            }
-            else
-            {
-                return("Polisen tog tjuven, men det fanns inget att ta.");
-            }
-
-
+            Console.SetCursorPosition(0, 25);
+            Console.WriteLine("Polisen tar tjuven och beslagtar alla saker.");
         }
-
     }
+
 }
 
