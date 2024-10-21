@@ -46,7 +46,7 @@ namespace TjuvOPolis1
                 {
                     person.Move(width, height);
 
-                    // Kontrollera om det finns någon annan person på samma position
+                    
                     foreach (var otherPerson in persons)
                     {
                         if (person != otherPerson && person.X == otherPerson.X && person.Y == otherPerson.Y)
@@ -90,7 +90,7 @@ namespace TjuvOPolis1
                 else if (person is Citizen) Console.Write("M");
             }
 
-            Console.SetCursorPosition(0, height + 1); // Flytta cursor till botten av rutan så statsen hamnar utanför
+            Console.SetCursorPosition(0, height + 1); // Flyttar cursor till botten av rutan så att texten hamnar utanför
             Console.WriteLine($"\nAntal rånade medborgare: {numberOfRobbedCitizens}");
             Console.WriteLine($"Antal gripna tjuvar: {numberOfArrestedThieves}");
         }
@@ -103,7 +103,7 @@ namespace TjuvOPolis1
                 {
                     if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
                     {
-                        Console.SetCursorPosition(j, i);
+                        Console.SetCursorPosition(j, i); // Detta för att få kanter runt staden. 
                         Console.Write("|");
                     }
                 }
