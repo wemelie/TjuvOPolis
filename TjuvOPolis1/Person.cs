@@ -10,11 +10,11 @@ namespace TjuvOPolis1
 
     public class Person
     {
-        public int X { get; set; } // X-position 
-        public int Y { get; set; } // Y-position 
-        public int XDirection { get; set; } // Riktning i X-led (kan vara -1, 0, eller 1)
-        public int YDirection { get; set; } // Riktning i Y-led (kan vara -1, 0, eller 1)
-        public List<string> Inventory { get; set; } // En lista av saker
+        public int X { get; set; }
+        public int Y { get; set; } 
+        public int XDirection { get; set; } 
+        public int YDirection { get; set; } 
+        public List<string> Inventory { get; set; } 
 
         public Person(int x, int y)
         {
